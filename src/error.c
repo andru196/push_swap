@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 16:38:28 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 17:05:51 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:23:46 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		error(t_psl *a, t_psl *b, t_ins *commands[COMANDS], t_list *lst)
 	exit(1);
 }
 
-int	lstlen(t_psl *a)
+int			lstlen(t_psl *a)
 {
 	int i;
 

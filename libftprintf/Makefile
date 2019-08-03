@@ -6,7 +6,7 @@
 #    By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/05 17:33:42 by ycorrupt          #+#    #+#              #
-#    Updated: 2019/07/03 19:07:52 by sfalia-f         ###   ########.fr        #
+#    Updated: 2019/07/21 17:21:58 by sfalia-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 $(OBJ):
-	@$(CC) -I $(HEADER) $(FLAGS) -c $(SRCS1) -g
-	@$(CC) -I $(HEADER) $(FLAGS) -c $(SRCS2) -g
+	@$(CC) -I $(HEADER) $(FLAGS) -c $(SRCS1)
+	@$(CC) -I $(HEADER) $(FLAGS) -c $(SRCS2)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)

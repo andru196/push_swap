@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 20:28:56 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 17:39:45 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/26 18:03:48 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_list	*error_read(t_list **lt, char *str, t_ins *arr[COMANDS])
 	return ((t_list *)-1);
 }
 
-t_list			*read_answers(t_ins *arr[COMANDS])
+t_list			*read_answers(t_ins *arr[COMANDS], int fd)
 {
 	char	*a;
 	int		i;
@@ -43,7 +43,7 @@ t_list			*read_answers(t_ins *arr[COMANDS])
 
 	rez = NULL;
 	lst = NULL;
-	while (get_next_line(0, &a) && (i = ft_strlen(a)))
+	while (get_next_line(fd, &a) && (i = ft_strlen(a)))
 	{
 		if (!lst)
 		{

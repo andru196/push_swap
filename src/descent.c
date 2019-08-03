@@ -6,20 +6,20 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:54:42 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 16:21:23 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/03 17:12:23 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_bottom(t_psl *a, int *arr, int n)
+static int		is_bottom(t_psl *a, int *arr, int n)
 {
 	int		num;
 	int		i;
 	int		f;
 
-	if (!a || (a && a->next && (lstlen(a) == 2 && (a->num < a->next->num 
-		&& a->next->num) ^ (a->num == arr[n - 1]))))
+	if (!a || (a && a->next && (lstlen(a) == 2 && ((a->num < a->next->num)
+		^ (a->num == arr[n - 1])))))
 		return (1);
 	i = 0;
 	while (arr[i] != a->num)
@@ -41,7 +41,7 @@ static int	is_bottom(t_psl *a, int *arr, int n)
 	return (f);
 }
 
-static int	right_place(t_psl *a) //int *arr, int n)
+static int		right_place(t_psl *a)
 {
 	int	num;
 	int	f;
@@ -52,10 +52,10 @@ static int	right_place(t_psl *a) //int *arr, int n)
 	while (a)
 	{
 		if (num > a->num)
-			{
-				f = 1;
-				break ;
-			}
+		{
+			f = 1;
+			break ;
+		}
 		a = a->next;
 	}
 	while (f && a->next)
@@ -65,27 +65,28 @@ static int	right_place(t_psl *a) //int *arr, int n)
 		a = a->next;
 	}
 	return (!a);
-	
 }
 
-static int	p_or_r(t_psl *a, t_psl *b, int *arr, int n)
+static int		p_or_r(t_psl *a, t_psl *b, int *arr, int n)
 {
 	int	i;
 	int	num;
 
 	num = a->num;
-	if (b && num < b->num) // не учитывается, что можно свапнуть
+	if (b && num < b->num)
 		return (0);
 	i = 0;
 	while (arr[i] != num && i < n)
 		i++;
-	/*
-		какой-то код, подвергающий сомнению, что ретурн 1, а не 0
-	*/
 	return (1);
 }
 
-static char	*rr_ra(t_psl **a, t_psl **b)
+/*
+** 81ая строка:
+** какой-то код, подвергающий сомнению, что ретурн 1, а не 0
+*/
+
+static char		*rr_ra(t_psl **a, t_psl **b)
 {
 	t_psl	*lst;
 
@@ -105,12 +106,12 @@ char			*immersion(t_psl **a, t_psl **b, int *arr, int n)
 	else if ((*a)->next && (*a)->next->num < (*a)->num)
 		return (swap_method(a, b, arr, n));
 	else if (!right_place(*a))
-		return (rotate_method(a, b, arr, n));
-	else 
+		return (rotate_method(a, b));
+	else
 	{
 		if (p_or_r(*a, *b, arr, n))
 			return (ex_command("pb", pb, a, b));
-		else 
+		else
 			return (rr_ra(a, b));
 	}
 }

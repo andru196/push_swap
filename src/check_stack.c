@@ -6,11 +6,15 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:34:05 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/07 15:54:23 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/26 18:18:13 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** 1 - обычный порядок, -1 - обратный
+*/
 
 int		check_stack(t_psl *stack_a, int argc, int order)
 {

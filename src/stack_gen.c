@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:20:15 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 16:16:01 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/26 17:43:37 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,23 @@ t_psl			*ps_create_stack(int argc, char **argv)
 
 	if (argc == 0)
 		return (NULL);
-	i = 0;
-	if (!check_num(argv[i], NULL))
-		error(NULL, NULL, NULL, NULL);
-	if (!(rez = ft_ps_lstnew(ft_atoi(argv[i]))))
-		error(NULL, NULL, NULL, NULL);
-	lst = rez;
+	i = -1;
+	rez = NULL;
 	while (++i < argc)
 	{
 		if (ft_strlen(argv[i]) == 0)
 			continue ;
 		if (!check_num(argv[i], rez))
 			error(rez, NULL, NULL, NULL);
-		if (!(lst->next = ft_ps_lstnew(ft_atoi(argv[i]))))
+		if (rez == NULL)
+		{
+			if (!(rez = ft_ps_lstnew(ft_atoi(argv[i]))))
+				error(rez, NULL, NULL, NULL);
+			lst = rez;
+		}
+		else if (!(lst->next = ft_ps_lstnew(ft_atoi(argv[i]))))
 			error(rez, NULL, NULL, NULL);
-		lst = lst->next;
+		lst = lst->next ? lst->next : lst;
 	}
 	return (rez);
 }

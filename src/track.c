@@ -6,15 +6,17 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 15:58:07 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/07 18:01:11 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:58:47 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// ищем самую длинную последовательность
+/*
+** ищем самую длинную последовательность
+*/
 
-int 	track_re(t_psl *stack, int count)
+int		track_re(t_psl *stack, int count)
 {
 	t_psl	*lst;
 	int		num;
@@ -32,12 +34,11 @@ int 	track_re(t_psl *stack, int count)
 			max = tmp > max ? tmp : max;
 		}
 		lst = lst->next;
-		
 	}
 	return (max);
 }
 
-int 	track_an(t_psl *stack)
+int		track_an(t_psl *stack)
 {
 	int		num;
 	int		max;
@@ -51,7 +52,7 @@ int 	track_an(t_psl *stack)
 	{
 		if (ll->num <= max_n)
 		{
-				num = track_re(ll, 0);
+			num = track_re(ll, 0);
 			if (num > max)
 			{
 				max = num;

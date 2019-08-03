@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:07:49 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 18:05:40 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/26 17:45:22 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void	del_module(t_list *lst, t_ins *com[COMANDS], t_psl *a)
 	i = -1;
 	while (++i < COMANDS)
 		if (com[i])
+		{
+			free(com[i]->name);
 			free(com[i]);
+		}
 	ll = lst;
 	while (lst)
 	{
@@ -35,7 +38,6 @@ static void	del_module(t_list *lst, t_ins *com[COMANDS], t_psl *a)
 		free(ll);
 		ll = (t_list *)a;
 	}
-	
 }
 
 t_ins		*command(char **str, t_ins *com[COMANDS])
@@ -62,12 +64,12 @@ t_ins		*command(char **str, t_ins *com[COMANDS])
 			}
 		}
 		else
-			ins[i++] = *ss++;		
+			ins[i++] = *ss++;
 	}
 	return (NULL);
 }
 
-t_list	*newcom(t_ins *new)
+t_list		*newcom(t_ins *new)
 {
 	t_list *rez;
 
@@ -76,7 +78,7 @@ t_list	*newcom(t_ins *new)
 	return (rez);
 }
 
-t_list	*comman_list(char **str, t_ins *com[COMANDS])
+t_list		*comman_list(char **str, t_ins *com[COMANDS])
 {
 	t_list	*lst;
 	t_list	*rez;
@@ -103,7 +105,7 @@ t_list	*comman_list(char **str, t_ins *com[COMANDS])
 	return (rez);
 }
 
-void	finish_print(t_psl *stack_a, char *str, int fl[6])
+void		finish_print(t_psl *stack_a, char *str, int fl[6])
 {
 	t_psl	*stack_b;
 	t_ins	*com[COMANDS];
@@ -113,6 +115,8 @@ void	finish_print(t_psl *stack_a, char *str, int fl[6])
 	if (!(fill_ins(com)))
 		error(stack_a, NULL, com, NULL);
 	lst = comman_list(&str, com);
+	fl[1] = !fl[1] ? 1 : open("log.txt", O_WRONLY | O_CREAT, 0640);
 	print_me(fl, lst, &stack_a, &stack_b);
-	del_module(lst, com, NULL);
+	close(fl[1]);
+	del_module(lst, com, stack_a);
 }

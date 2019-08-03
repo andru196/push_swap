@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 15:42:51 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/13 19:52:14 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:56:41 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	*sort_params(t_psl *lst, int n)
 	int		*rez;
 	t_psl	*l;
 	int		max;
-	int 	i;
+	int		i;
 
 	if (!(rez = (int *)malloc(sizeof(int) * n)))
 		return (NULL);
@@ -92,15 +92,22 @@ static int	check_flags(int argc, char **argv, int flag[6])
 	return (j);
 }
 
-static	void free_for_ps(t_psl *a, int *arr)
+static void	free_for_ps(t_psl *a, int *arr)
 {
-	if (a)
-		free(a);
+	t_psl *a_a;
+
+	a_a = a;
+	while (a)
+	{
+		a = a->next;
+		free(a_a);
+		a_a = a;
+	}
 	if (arr)
 		free(arr);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_psl	*stack_a;
 	t_psl	*stack_b;

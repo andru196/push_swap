@@ -6,7 +6,7 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 18:40:14 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 17:40:10 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/07/21 14:23:16 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			error_commands(t_ins *arr[COMANDS])
 	int i;
 
 	if (arr)
-		{
+	{
 		i = 0;
 		while (i < COMANDS)
 		{

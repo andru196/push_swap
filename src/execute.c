@@ -6,35 +6,13 @@
 /*   By: sfalia-f <sfalia-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 15:43:30 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/07/14 15:39:32 by sfalia-f         ###   ########.fr       */
+/*   Updated: 2019/08/03 18:02:10 by sfalia-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// t_psl	*n_thpsl(t_psl *a, int n)
-// {
-// 	if (!a)
-// 		return (NULL);
-// 	while (n-- && a)
-// 		a = a->next;
-// 	return (a);
-// }
-
-// int		get_num(t_psl *a, int n)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (n != a->num)
-// 	{
-// 		i++;
-// 		a = a->next;
-// 	}
-// 	return (i);
-// }
-
-char	*ex_a_copy(char **str, char **part)
+char		*ex_a_copy(char **str, char **part)
 {
 	char	*str2;
 
@@ -58,10 +36,10 @@ char	*ex_a_copy(char **str, char **part)
 	return (*str);
 }
 
-char	*norm_str(t_psl **a, char *dst, char *src)
+char		*norm_str(t_psl **a, char *dst, char *src)
 {
 	char	*rez;
-	
+
 	if (!ft_strcmp(src, "ra"))
 	{
 		rez = ft_strjoin(dst, "ra\n");
@@ -73,10 +51,10 @@ char	*norm_str(t_psl **a, char *dst, char *src)
 		rra(a, NULL);
 	}
 	if (dst)
-			free(dst);
+		free(dst);
 	return (rez);
-	
 }
+
 static char	*normalize(t_psl **a, t_psl **b)
 {
 	int		num;
@@ -119,6 +97,8 @@ char		*hard_mode(t_psl **a, t_psl **b, int *arr, int n)
 	}
 	while ((str1 = immersion(a, b, arr, n)))
 	{
+		//ft_putendl(str1);
+		//print_stack(*a, *b, 1);
 		if (!(str = ex_a_copy(&str, &str1)))
 			return (NULL);
 	}
