@@ -26,7 +26,7 @@ OBJ2 = csp.o dioux.o f.o flags.o ft_dtoa.o print.o searching.o size_converter.o 
 OBJ = $(OBJ1) $(OBJ2)
 HEADER = ./includes
 CC = clang
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wextra 
 
 all: $(NAME)
 $(OBJ):

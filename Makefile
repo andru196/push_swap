@@ -19,16 +19,16 @@ $(LIBNAME):
 	@make -C $(LIB)/ re
 
 $(NAME_INT): $(LIBNAME)
-	@gcc $(FLAGS) $(INCL) -c src/interpr.c $(SRCS) -g
-	@gcc -o $(NAME_INT) interpr.o $(OBJ) -L $(LIB)/ -lftprintf -g
+	@clang $(FLAGS) $(INCL) -c src/interpr.c $(SRCS) -g
+	@clang -o $(NAME_INT) interpr.o $(OBJ) -L $(LIB)/ -lftprintf -g
 
 $(NAME_CHECK): $(LIBNAME)
-	@gcc $(FLAGS) $(INCL) -c src/main.c $(SRCS) -g
-	@gcc -o $(NAME_CHECK) main.o $(OBJ) -L $(LIB)/ -lftprintf -g
+	@clang $(FLAGS) $(INCL) -c src/main.c $(SRCS) -g
+	@clang -o $(NAME_CHECK) main.o $(OBJ) -L $(LIB)/ -lftprintf -g
 
 $(NAME_SOL): $(LIBNAME)
-	@gcc $(FLAGS) $(INCL) -c src/push_swap.c $(SRCS) -g
-	@gcc -o $(NAME_SOL) push_swap.o $(OBJ) -L $(LIB)/ -lftprintf -g
+	@clang $(FLAGS) $(INCL) -c src/push_swap.c $(SRCS) -g
+	@clang -o $(NAME_SOL) push_swap.o $(OBJ) -L $(LIB)/ -lftprintf -g
 
 clean:
 	@/bin/rm -f push_swap.o main.o interpr.o $(OBJ)

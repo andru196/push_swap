@@ -41,11 +41,9 @@ char	*short_way(t_psl **stack_a, int *arr)
 int		short_climb(t_psl **a, t_psl **b, int *arr)
 {
 	int		i;
-	int		j;
 	t_psl	*lst;
 
 	i = 0;
-	j = 0;
 	if (!*b)
 	{
 		lst = *a;
